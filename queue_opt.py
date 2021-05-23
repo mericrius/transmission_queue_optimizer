@@ -75,3 +75,4 @@ if __name__ == '__main__':
         status['Excuted Time'] = datetime.now().isoformat()
         with open('status.json', 'w', encoding='utf-8') as fp:
             json.dump(status, fp, indent=4, ensure_ascii=False)
+        logger.info(f"Saved downloading status to status.json")
