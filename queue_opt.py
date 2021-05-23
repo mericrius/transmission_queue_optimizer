@@ -46,7 +46,7 @@ if __name__ == '__main__':
         downloadSpeed = {key:(prevDownloading[key][1] - status[key][1])/WatchTimer for key in status if key in prevDownloading}
 
         speedTotal = sum(downloadSpeed.values())
-        logger.info(f"Download Speed: {speedTotal/1024/1024} MB/s")
+        logger.info(f"Download Speed: {speedTotal/1024/1024:5.2f} MB/s")
 
         if speedTotal > 1024*1024*3:
             SpeedMininum = 10*1024
