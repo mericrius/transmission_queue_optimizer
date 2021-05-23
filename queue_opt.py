@@ -26,6 +26,8 @@ def getDownloading() -> dict:
     return {t.id: (t.name, t.left_until_done) for t in torrents}
 
 if __name__ == '__main__':
+    logger.info("Queue Optimizer Started")
+
     if os.path.isfile('status.json'):
         with open('status.json', 'r') as fp:
             jsonStatus = json.load(fp)
