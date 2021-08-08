@@ -48,16 +48,18 @@ if __name__ == '__main__':
         speedTotal = sum(downloadSpeed.values())
         logger.info(f"Download Speed: {speedTotal/1024/1024:5.2f} MB/s")
 
-        if speedTotal > 1024*1024*3:
-            SpeedMininum = 10*1024
+        if speedTotal > 1024*1024*4:
+            SpeedMinimum = 0
+        elif speedTotal > 1024*1024*3:
+            SpeedMinimum = 10*1024
         elif speedTotal > 1024*1024*2:
-            SpeedMininum = 50*1024
+            SpeedMinimum = 50*1024
         elif speedTotal > 1024*1024*1:
-            SpeedMininum = 100*1024
+            SpeedMinimum = 100*1024
         else:
-            SpeedMininum = 200*1024
+            SpeedMinimum = 200*1024
 
-        bottomKey = [key for key in downloadSpeed if downloadSpeed[key] < SpeedMininum]
+        bottomKey = [key for key in downloadSpeed if downloadSpeed[key] < SpeedMinimum]
 
         for key in bottomKey:
             client.stop_torrent(key)
